@@ -116,7 +116,10 @@ public partial class Main : Form
 
     private void Column_KeyPress(object sender, KeyPressEventArgs e)
     {
-        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+        var decimalSepatator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        var containsSeaparator = dataGridView.CurrentCell.EditedFormattedValue?.ToString()?.Contains(decimalSepatator) ?? false;
+        var isValidDecimalSeparator = e.KeyChar == Convert.ToChar(decimalSepatator) && !containsSeaparator;
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !isValidDecimalSeparator)
         {
             e.Handled = true;
         }
