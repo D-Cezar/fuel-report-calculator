@@ -28,82 +28,84 @@ partial class Main
     /// </summary>
     private void InitializeComponent()
     {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.calculatorListBox = new System.Windows.Forms.ListBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.print = new System.Windows.Forms.Button();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // calculatorListBox
-            // 
-            this.calculatorListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.calculatorListBox.DisplayMember = "Name";
-            this.calculatorListBox.FormattingEnabled = true;
-            this.calculatorListBox.ItemHeight = 41;
-            this.calculatorListBox.Location = new System.Drawing.Point(12, 12);
-            this.calculatorListBox.Name = "calculatorListBox";
-            this.calculatorListBox.Size = new System.Drawing.Size(525, 906);
-            this.calculatorListBox.Sorted = true;
-            this.calculatorListBox.TabIndex = 1;
-            this.calculatorListBox.ValueMember = "Type";
-            this.calculatorListBox.SelectedIndexChanged += new System.EventHandler(this.calculatorListBox_SelectedIndexChanged);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(642, 12);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.RowHeadersWidth = 102;
-            this.dataGridView.RowTemplate.Height = 49;
-            this.dataGridView.Size = new System.Drawing.Size(1645, 680);
-            this.dataGridView.TabIndex = 2;
-            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
-            this.dataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView_RowsAdded);
-            this.dataGridView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView_KeyUp);
-            // 
-            // print
-            // 
-            this.print.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.print.Location = new System.Drawing.Point(1627, 803);
-            this.print.Name = "print";
-            this.print.Size = new System.Drawing.Size(188, 58);
-            this.print.TabIndex = 3;
-            this.print.Text = "Print";
-            this.print.UseVisualStyleBackColor = true;
-            this.print.Click += new System.EventHandler(this.print_Click);
-            // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.dateTimePicker.CustomFormat = "MM.yyyy";
-            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker.Location = new System.Drawing.Point(1274, 814);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(223, 47);
-            this.dateTimePicker.TabIndex = 4;
-            // 
-            // Main
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2299, 933);
-            this.Controls.Add(this.dateTimePicker);
-            this.Controls.Add(this.print);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.calculatorListBox);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Main";
-            this.Text = "Calculator Consum";
-            this.Load += new System.EventHandler(this.Main_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.ResumeLayout(false);
-
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+        calculatorListBox = new ListBox();
+        dataGridView = new DataGridView();
+        print = new Button();
+        dateTimePicker = new DateTimePicker();
+        ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
+        SuspendLayout();
+        // 
+        // calculatorListBox
+        // 
+        calculatorListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+        calculatorListBox.DisplayMember = "Name";
+        calculatorListBox.FormattingEnabled = true;
+        calculatorListBox.ItemHeight = 25;
+        calculatorListBox.Location = new Point(7, 7);
+        calculatorListBox.Margin = new Padding(2);
+        calculatorListBox.Name = "calculatorListBox";
+        calculatorListBox.Size = new Size(310, 554);
+        calculatorListBox.Sorted = true;
+        calculatorListBox.TabIndex = 1;
+        calculatorListBox.ValueMember = "Type";
+        calculatorListBox.SelectedIndexChanged += calculatorListBox_SelectedIndexChanged;
+        // 
+        // dataGridView
+        // 
+        dataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView.Location = new Point(378, 7);
+        dataGridView.Margin = new Padding(2);
+        dataGridView.Name = "dataGridView";
+        dataGridView.RowHeadersWidth = 102;
+        dataGridView.RowTemplate.Height = 49;
+        dataGridView.Size = new Size(747, 415);
+        dataGridView.TabIndex = 2;
+        dataGridView.CellValueChanged += dataGridView_CellValueChanged;
+        dataGridView.EditingControlShowing += dataGridView_EditingControlShowing;
+        dataGridView.RowsAdded += dataGridView_RowsAdded;
+        dataGridView.KeyUp += dataGridView_KeyUp;
+        // 
+        // print
+        // 
+        print.Anchor = AnchorStyles.Bottom;
+        print.Location = new Point(957, 490);
+        print.Margin = new Padding(2);
+        print.Name = "print";
+        print.Size = new Size(111, 35);
+        print.TabIndex = 3;
+        print.Text = "Print";
+        print.UseVisualStyleBackColor = true;
+        print.Click += print_Click;
+        // 
+        // dateTimePicker
+        // 
+        dateTimePicker.Anchor = AnchorStyles.Bottom;
+        dateTimePicker.CustomFormat = "MM.yyyy";
+        dateTimePicker.Format = DateTimePickerFormat.Custom;
+        dateTimePicker.Location = new Point(749, 496);
+        dateTimePicker.Margin = new Padding(2);
+        dateTimePicker.Name = "dateTimePicker";
+        dateTimePicker.Size = new Size(133, 31);
+        dateTimePicker.TabIndex = 4;
+        // 
+        // Main
+        // 
+        AutoScaleDimensions = new SizeF(10F, 25F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(1132, 569);
+        Controls.Add(dateTimePicker);
+        Controls.Add(print);
+        Controls.Add(dataGridView);
+        Controls.Add(calculatorListBox);
+        Icon = (Icon)resources.GetObject("$this.Icon");
+        Margin = new Padding(2);
+        Name = "Main";
+        Text = "Calculator Consum";
+        Load += Main_Load;
+        ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
+        ResumeLayout(false);
     }
 
     #endregion

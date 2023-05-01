@@ -1,5 +1,6 @@
 using ConsumptionCalculator.Calculators;
 using Microsoft.Extensions.Configuration;
+using System.Windows.Forms;
 
 namespace ConsumptionCalculator;
 
@@ -100,5 +101,27 @@ public partial class Main : Form
         }
 
         PdfPrinter.SavePdf(sfd.FileName, title, _settings, _calculators.Where(x => x.HasData).ToList());
+    }
+
+    private void dataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+    {
+        e.Control.KeyPress -= new KeyPressEventHandler(Column_KeyPress);
+
+        var tb = e.Control as TextBox;
+        if (tb != null)
+        {
+            tb.KeyPress += new KeyPressEventHandler(Column_KeyPress);
+        }
+    }
+
+    private void Column_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        var decimalSepatator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        var containsSeaparator = dataGridView.CurrentCell.EditedFormattedValue?.ToString()?.Contains(decimalSepatator) ?? false;
+        var isValidDecimalSeparator = e.KeyChar == Convert.ToChar(decimalSepatator) && !containsSeaparator;
+        if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !isValidDecimalSeparator)
+        {
+            e.Handled = true;
+        }
     }
 }
